@@ -118,23 +118,7 @@
                     <tr>
                         <td colspan="2">
                             <p>Measure metrics of algorithm version:</p>
-
-                            {% ifequal request.user.pk algorithm.user.pk %}
-                                <form>
-                                    <select id="mole_id">
-                                        <option value="" disabled selected>Select molecule</option>
-                                        {% for m in molecules %}
-                                            <option
-                                                value="{% url 'test_algorithm'%}?molecule={{ m.pk }}&version={{ selected_version.pk }}">
-                                                {{ m.name }}
-                                            </option>
-                                        {% endfor %}
-
-                                    </select>
-                                    <a class="btn btn-primary" onclick="analyseMetrics()">Run</a>
-                                </form>
-                            {% endifequal %}
-                            <div id="in_progress"></div>
+                            
                         </td>
                     </tr>
                 </tbody>
@@ -354,6 +338,8 @@
             drawSingleChart(view, 3, 'iterations-chart')
             drawSingleChart(view, 4, 'success-chart')
         }
+
+        // FIXME Functions below this comment can probably be removed, leaving them for now.
 
         function analyseMetrics() {
             var x = document.getElementById('mole_id');
