@@ -8,7 +8,8 @@ import dotenv
 
 def main():
     """Run administrative tasks."""
-    dotenv.read_dotenv()
+    # FIXME Does this do anything?
+    #dotenv.read_dotenv()
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'WebMark.settings')
     try:
         from django.core.management import execute_from_command_line
