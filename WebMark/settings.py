@@ -136,8 +136,6 @@ ROOT_DIR = os.getenv("ROOT_DIR", '')
 
 ALGORITHMS_PER_PAGE = 20
 
-USING_CELERY = False if os.getenv("USING_CELERY") == "False" else True
-
 API_KEY = os.getenv("API_KEY")
 
 # Static files (CSS, JavaScript, Images)
