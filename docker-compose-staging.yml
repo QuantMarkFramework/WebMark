@@ -11,6 +11,25 @@ services:
     container_name: quantmark2-db
     restart: unless-stopped
 
+    quantmark2-web:
+      image: blakaut/ohtup-quant
+      environment:
+        - DATABASE_NAME=postgres
+        - DATABASE_USER=postgres
+        - DATABASE_PASSWORD=postgres
+        - DATABASE_HOST=quantmark2-db
+        - DATABASE_PORT=5432
+        - ROOT_DIR=quantmark2/
+        - SECRET_KEY="(enfmztw6!r!b7^_s31p68cqm-)w8g(qru+od0bc9oz&6_0q!9"
+        - DEBUG=True
+      command: sh -c "
+        python manage.py makemigrations WebCLI &&
+        python manage.py migrate --noinput &&
+        gunicorn WebMark.wsgi -b 0.0.0.0:8000"
+      container_name: quantmark2-web
+      restart: unless-stopped
+      depends_on:
+
 '''
   quantmark-rabbitmq:
     image: rabbitmq:3.8

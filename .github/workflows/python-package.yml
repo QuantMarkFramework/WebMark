@@ -81,7 +81,7 @@ jobs:
       with:
         push: true
         tags: blakaut/ohtup-quant:latest
-        build-args: LIBMARK_VERSION=main
+        #build-args: LIBMARK_VERSION=main
         
 #    - name: Build BenchMark and push
 #      if: ${{ github.event_name == 'push'}}
