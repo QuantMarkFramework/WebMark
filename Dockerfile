@@ -9,5 +9,4 @@ WORKDIR /code
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-RUN pip install git+https://github.com/ohtu2021-kvantti/LibMark@${LIBMARK_VERSION}
 COPY . .
