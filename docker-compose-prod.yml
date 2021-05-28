@@ -3,9 +3,9 @@ version: "3.7"
 
 services:
 
-  quantmark-nginx:
+  quantmark2-nginx:
     image: nginx:1.19-alpine
-    container_name: quantmark-nginx
+    container_name: quantmark2-nginx
     restart: unless-stopped
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
@@ -13,28 +13,31 @@ services:
     ports:
       - 80:80
       - 443:443
-    depends_on:
-      - quantmark-web
+    #depends_on:
+    #  - quantmark-web
 
-  quantmark-db:
+  quantmark2-db:
     image: postgres:13.1
     environment:
       - POSTGRES_DB=${DATABASE_NAME}
       - POSTGRES_USER=${DATABASE_USER}
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-    container_name: quantmark-db
+    container_name: quantmark2-db
     restart: unless-stopped
 
+'''
   quantmark-rabbitmq:
-    image: tapanih/rabbitmq-prod:0.1
+    #image: tapanih/rabbitmq-prod:0.1
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
     container_name: quantmark-rabbitmq
     restart: unless-stopped
+'''
 
+'''
   quantmark-web:
-    image: tapanih/quantmark_web
+    #image: tapanih/quantmark_web
     environment:
       - DATABASE_NAME=${DATABASE_NAME}
       - DATABASE_USER=${DATABASE_USER}
@@ -56,7 +59,9 @@ services:
       - ./staticfiles:/code/staticfiles
     depends_on:
       - quantmark-db
+'''
 
+'''
   quantmark-benchmark:
     image: tapanih/quantmark_benchmark
     environment:
@@ -66,4 +71,4 @@ services:
     command: conda run --no-capture-output -n benchmark celery -A benchmark worker -l info
     container_name: quantmark-benchmark
     restart: unless-stopped
-
+'''

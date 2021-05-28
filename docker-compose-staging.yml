@@ -2,19 +2,21 @@
 version: "3.7"
 
 services:
-  quantmark-db:
+  quantmark2-db:
     image: postgres:13.1
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    container_name: quantmark-db
+    container_name: quantmark2-db
     restart: unless-stopped
 
+'''
   quantmark-rabbitmq:
     image: rabbitmq:3.8
     container_name: quantmark-rabbitmq
     restart: unless-stopped
+
 
   quantmark-web:
     image: tapanih/quantmark_web
@@ -45,6 +47,7 @@ services:
     command: conda run --no-capture-output -n benchmark celery -A benchmark worker -l info
     container_name: quantmark-benchmark
     restart: unless-stopped
+'''
 
 networks:
   default:
