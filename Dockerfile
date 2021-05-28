@@ -1,8 +1,8 @@
 FROM python:3.7-slim-buster
-ARG LIBMARK_VERSION
 
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
+ARG LIBMARK_VERSION
 
 RUN apt-get update && apt-get -y install git
 WORKDIR /code
