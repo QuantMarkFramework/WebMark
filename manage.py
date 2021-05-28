@@ -2,13 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-<<<<<<< HEAD
-
 from dotenv import load_dotenv
-=======
-import dotenv
->>>>>>> cce2f4e6f4a912d2a6500ee1dcb56d829199844e
-
 
 def main():
     """Run administrative tasks."""
