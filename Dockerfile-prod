@@ -1,5 +1,5 @@
 # TODO: use this Dockerfile in Github Actions
-FROM python:3.7-slim-buster as build
+FROM python:3.9-slim as build
 
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -13,7 +13,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /code/wheels -r requirements.
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /code/wheels \
     git+https://github.com/ohtu2021-kvantti/LibMark@${LIBMARK_VERSION}
 
-FROM python:3.7-slim-buster
+FROM python:3.9-slim
 
 RUN useradd -ms /bin/bash app
 WORKDIR /home/app/code
