@@ -3,12 +3,12 @@
 import os
 import sys
 
-import dotenv
+from dotenv import load_dotenv
 
 
 def main():
     """Run administrative tasks."""
-    #dotenv.load_dotenv()
+    load_dotenv()
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'WebMark.settings')
     try:
         from django.core.management import execute_from_command_line
