@@ -34,12 +34,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.7
+        python-version: 3.9
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-#        pip install git+https://github.com/ohtu2021-kvantti/LibMark
+        pip install git+https://github.com/ohtu2021-kvantti/LibMark
     - name: Run migrations
       run: |
         touch .env
@@ -81,7 +81,7 @@ jobs:
       with:
         push: true
         tags: blakaut/ohtup-quant:latest
-        build-args: LIBMARK_VERSION=main
+        #build-args: LIBMARK_VERSION=main
         
 #    - name: Build BenchMark and push
 #      if: ${{ github.event_name == 'push'}}

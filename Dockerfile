@@ -1,4 +1,4 @@
-FROM python:3.7-slim-buster
+FROM python:3.9-slim
 
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -9,4 +9,5 @@ WORKDIR /code
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+RUN pip install git+https://github.com/ohtu2021-kvantti/LibMark@${LIBMARK_VERSION}
 COPY . .
