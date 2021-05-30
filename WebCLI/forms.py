@@ -4,7 +4,7 @@ from django.views import generic
 from django.forms import ModelForm, Textarea, HiddenInput, Select, ChoiceField
 from django.forms.widgets import NumberInput, TextInput
 from .models import Algorithm, Molecule, Algorithm_type, Algorithm_version, Metrics
-#import quantmark as qm
+# import quantmark as qm
 from .misc.analyze_options import optimizer_methods, optimizer_modules, basis_set_options
 from .misc.helpers import get_transformation_options
 
@@ -44,8 +44,8 @@ class AlgorithmVersionForm(ModelForm):
 
     def clean_circuit(self):
         circuit = self.clean().get('circuit')
- #       if not qm.circuit.validate_circuit_syntax(circuit):
- #          self.add_error('circuit', 'use string printed by tequila.circuit')
+        # if not qm.circuit.validate_circuit_syntax(circuit):
+            # self.add_error('circuit', 'use string printed by tequila.circuit')
         return circuit
 
     class Meta:
@@ -85,16 +85,16 @@ class MoleculeForm(ModelForm):
 
     def clean_structure(self):
         structure = self.clean().get('structure')
-#        if not qm.molecule.validate_geometry_syntax(structure):
- #           self.add_error('structure', 'Atom syntax (one atom per line): Li 0.0 0.0 1.6')
+        # if not qm.molecule.validate_geometry_syntax(structure):
+           # self.add_error('structure', 'Atom syntax (one atom per line): Li 0.0 0.0 1.6')
         return structure
 
     def clean_active_orbitals(self):
         active_orbitals = self.clean().get('active_orbitals')
         if (active_orbitals == ''):
             return active_orbitals
-#        if not qm.molecule.validate_orbitals_syntax(active_orbitals):
-#            self.add_error('active_orbitals', 'Orbital syntax (one orbital per line): A1 1 2 4 5 7')
+        # if not qm.molecule.validate_orbitals_syntax(active_orbitals):
+            # self.add_error('active_orbitals', 'Orbital syntax (one orbital per line): A1 1 2 4 5 7')
         return active_orbitals
 
     class Meta:
