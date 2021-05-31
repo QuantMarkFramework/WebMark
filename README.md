@@ -1,8 +1,6 @@
 # WebMark
 
-![Python package](https://github.com/ohtu2021-kvantti/WebMark/workflows/Python%20package/badge.svg)
-[![codecov](https://codecov.io/gh/ohtu2021-kvantti/WebMark/branch/main/graph/badge.svg?token=40N85S73PK)](https://codecov.io/gh/ohtu2021-kvantti/WebMark)
-[![Maintainability](https://api.codeclimate.com/v1/badges/25622c2cc42215a674b4/maintainability)](https://codeclimate.com/github/ohtu2021-kvantti/WebMark/maintainability)
+[![codecov](https://codecov.io/gh/quantum-ohtu/WebMark/branch/main/graph/badge.svg?token=v5v9pp0sfJ)](https://codecov.io/gh/quantum-ohtu/WebMark)
 
 Web platform for benchmarking quantum computing algorithms.
 
@@ -75,38 +73,6 @@ python manage.py makemigrations WebCLI
 python manage.py migrate
 ```
 And then run the development server again.
-
-### Setting up RabbitMQ
-
-Install RabbitMQ with
-```
-sudo apt install -y rabbitmq-server
-```
-and start the server with
-```
-sudo rabbitmq-server
-```
-
-### Setting up BenchMark
-
-Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) according to the instructions.
-
-Create and activate a Conda environment
-```
-cd BenchMark/
-conda env create -f environment.yml
-conda activate benchmark
-```
-
-Install additional dependencies with pip
-```
-pip install -r requirements.txt
-pip install git+https://github.com/ohtu2021-kvantti/LibMark.git
-```
-Start workers with
-```
-celery -A benchmark worker -l info
-```
 
 ## Other commands
 
