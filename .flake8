@@ -1,4 +1,4 @@
 [flake8]
-exclude = .git,__pycache__,old,build,dist,venv,WebCLI/migrations
+exclude = .git,__pycache__,old,build,dist,venv,qleader/migrations
 max-complexity = 10
-max-line-length = 100 
+max-line-length = 105

@@ -1,0 +1,87 @@
+{% extends "rest_framework/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block style %}
+{{ block.super }}
+<style type="text/css">
+  .clickable-row {
+    cursor: pointer;
+  }
+
+  .clickable-row:hover {
+    background-color: #eeeeee;
+  }
+
+  .checkbox-td {
+    background-color: #ffffff;
+  }
+
+  .checkbox {
+    display: inline;
+  }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="starter-template">
+  <h1>Home</h1>
+
+  {% include "navbar.html" %}
+
+  <h2>All uploads</h2>
+
+  <table width="100%">
+    <thead>
+      <th>ID</th>
+      <th>Basis set</th>
+      <th>Transformation</th>
+      <th>Optimizer</th>
+      <th>Date</th>
+      <th>Compare</th>
+    </thead>
+    {% for result in results %}
+    <tr class='clickable-row' data-href='{{ path_prefix }}/api/{{ result.id }}/'>
+      <td>{{ result.id }}</td>
+      <td>{{ result.basis_set }}</td>
+      <td>{{ result.transformation }}</td>
+      <td>{{ result.optimizer }}</td>
+      <td>{{ result.created|date:"Y-m-d H:i" }}</td>
+      <td class='checkbox-td'><input type="checkbox" id="{{ result.id }}">&nbsp;</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a id="compare" href="">Compare</a>
+</div>
+{% endblock %}
+
+{% block script %}
+{{ block.super }}
+<script>
+  // When a page is loaded, make all checkboxes unchecked
+  const checkboxes = document.querySelectorAll('input');
+  for (i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].checked = false;
+  };
+
+  $(document).ready(function ($) {
+    $(".clickable-row").click(function (event) {
+      // Don't redirect the user if checkbox or its vicinity is clicked.
+      if (event.target.type !== 'checkbox' && event.target.className !== 'checkbox-td') {
+        window.location = $(this).data("href")
+      }
+    });
+  });
+
+  $('#compare').click(function() {
+    const checkboxes = [...document.querySelectorAll('input')];
+    checkedIds = {id: checkboxes.filter(elem => elem.checked === true).map(elem => elem.id)};
+    const params = $.param(checkedIds);
+    url = `{{ path_prefix }}/api/compare/?${params}`;
+    $(this).attr("href", url);
+    window.location = $(this).data("href");
+  });
+
+</script>
+{% endblock %}

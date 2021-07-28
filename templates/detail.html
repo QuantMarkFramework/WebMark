@@ -1,0 +1,203 @@
+{% extends "rest_framework/base.html" %}
+
+{% block title %}QuantMark2 Detail: {{ result.id }}{% endblock %}
+
+{% block style %}
+{{ block.super }}
+<style type="text/css">
+  table.data th,
+  td {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  th.right,
+  td.right {
+    text-align: right;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="starter-template">
+  <h1>Experiment {{ result.id }} details:</h1>
+  <div style="width: 30%; float: left; margin: 5%">
+    <table width="100%">
+      <tr>
+        <td>Created: </td>
+        <td>{{ result.created|date:"Y-m-d H:i" }}</td>
+      </tr>
+      <tr>
+        <td>Basis set: </td>
+        <td>{{ result.basis_set }}</td>
+      </tr>
+      <tr>
+        <td>Transformation: </td>
+        <td>{{ result.transformation}}</td>
+      </tr>
+      <tr>
+        <td>Optimizer: </td>
+        <td>{{ result.optimizer }}</td>
+      </tr>
+      <tr>
+        <td>Tequila version: </td>
+        <td>{{ result.tqversion }}</td>
+      </tr>
+    </table>
+
+    <p>&nbsp;</p>
+
+    <table class="data" width="100%">
+      <thead>
+        <th class="right">Energy</th>
+        <th class="right">Dist.</th>
+        <th class="right">Fun</th>
+        <th class="right">NFEv</th>
+      </thead>
+      {% for run in runs %}
+      <tr>
+        <td class="right">{{ run.energy|floatformat:3 }}</td>
+        <td class="right">{{ run.distance|floatformat:3 }}</td>
+        <td class="right">{{ run.fun|floatformat:3 }}</td>
+        <td class="right">{{ run.nfev }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <hr />
+  </div>
+  <div style="width: 50%; float: left; margin: 5%">
+    <div id="chart_energy_distance"></div>
+    <div id="chart_energy_iteration"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{{ block.super }}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', { 'packages': ['corechart', 'controls', 'line'] });
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    drawEnergyDistanceChart()
+    drawEnergyIterationChart()
+  }
+
+  function drawEnergyDistanceChart() {
+    var distances = {{ distances }}
+    var energies = {{ energies }}
+    var fci_distances = {{ fci_distances }}
+    var fci_energies = {{ fci_energies }}
+
+    var name = "{{ name }}"
+
+    var data = new google.visualization.DataTable({
+      cols: [ { id: 'distance', label: 'Distance', type: 'number' },
+              { id: 'energy', label: name, type: 'number' },
+              { id: 'fci', 'label': 'FCI def2-QZVPPD', type: 'number'} ]
+    });
+
+    for (i = 0; i < energies.length; i++) {
+      data.addRow([distances[i], energies[i], NaN])
+    };
+
+    for (i = 0; i < fci_distances.length; i++) {
+      data.addRow([fci_distances[i], NaN, fci_energies[i]])
+    };
+
+    // Form the wrapper that holds the chart and its options.
+    var chart = new google.visualization.ChartWrapper({
+      'chartType': 'LineChart',
+      dataTable: data,
+      'containerId': 'chart_energy_distance',
+      'options': {
+        'width': '100%',
+        height: 500,
+        pointsVisible: true,
+        title: 'Calculated energy against distance',
+        legend: { position: 'labeled' },
+        hAxis: { title: 'Distance', id: 'distance', type: 'number' },
+        vAxis: { title: "Energy", id: 'energy', type: 'number' },
+        explorer: {
+          keepInBounds: true,
+        },
+      }
+    });
+
+    chart.draw();
+  }
+
+  function drawEnergyIterationChart() {
+    var energyIterations = {{ iterationEnergies }}
+    var distances = {{ distances }}
+
+    var data = new google.visualization.DataTable();
+    data.addColumn('number', 'Iteration');
+
+    for (i = 0; i < energyIterations.length; i++) {
+      data.addColumn('number', distances[i])
+    }
+
+    maxIterations = Math.max.apply(null, energyIterations.map(elem => elem.length));
+
+    for (i = 0; i < maxIterations; i++) {
+      energies_it = energyIterations.map(elem => elem[i])
+      var row = [i + 1].concat(energies_it)
+      data.addRow(row)
+    };
+
+    // Form the wrapper that holds the chart and its options.
+    var chart = new google.visualization.ChartWrapper({
+      'chartType': 'LineChart',
+      dataTable: data,
+      containerId: 'chart_energy_iteration',
+      options: {
+        'width': '100%',
+        height: 500,
+        title: 'Energy against iteration for each distance',
+        hAxis: { title: 'Iteration', id: 'iteration', type: 'number' },
+        vAxis: { title: 'Energy', id: 'energy_per_iteration', type: 'number' },
+        explorer: {
+          keepInBounds: true,
+        },
+      }
+    })
+    chart.draw();
+  }
+
+  /*
+    * Dummy control wrapper that can be later used to implement controls on the chart.
+    * Should be added as its own <div>.
+    * 
+    var controller = new google.visualization.ControlWrapper({
+      'controlType': 'CategoryFilter',
+      'containerId': 'controller',
+      'options': {
+        explorer: {
+          actions: ['dragToZoom', 'rightClickToReset'],
+        },
+        filterColumnLabel: 'Name',
+        'ui': {
+          'chartType': 'LineChart',
+        }
+      }
+    });  
+    */
+
+    /* 
+    * Dashboard needed to join ControlWrapper with ChartWrapper.
+    *
+    var dashboard = new google.visualization.Dashboard(
+      document.getElementById('dashboard_div'));
+    */
+
+    /* Joining the ControlWrapper and ChartWrapper to the dashboard and drawing the dashboard.
+    * This is to be activated, if a controller is to be used.
+    * 
+    dashboard.bind(controller, chart);
+    dashboard.draw(data);
+  */
+
+</script>
+{% endblock %}

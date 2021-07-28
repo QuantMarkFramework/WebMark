@@ -1,0 +1,11 @@
+coverage==5.5
+curlylint==0.13
+djangorestframework==3.12.4
+flake8==3.8.4
+flake8-django==1.1.2
+gunicorn==20.0.4
+numpy==1.21
+# covered by djangorestframework: pytest
+psycopg2-binary==2.9.1
+python-dotenv==0.18
+social-auth-app-django==4.0.0

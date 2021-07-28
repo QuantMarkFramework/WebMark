@@ -1,0 +1,25 @@
+<thead>
+    <th>#</th>
+    <th>Test ID</th>
+    <th>Basis set</th>
+    <th>Transformation</th>
+    <th>Optimizer</th>
+    <th># of qubits</th>
+    <th>Minimum energy</th>
+    <th>Minimum distance</th>
+    <th>Date</th>
+</thead>
+
+{% for result in results %}
+<tr class='clickable-row' data-href='{{ path_prefix }}/api/{{ result.id }}/'>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ result.id }}</td>
+    <td>{{ result.basis_set }}</td>
+    <td>{{ result.transformation }}</td>
+    <td>{{ result.optimizer }}</td>
+    <td>{{ result.min_energy_qubits }}</td>
+    <td>{{ result.min_energy }}</td>
+    <td>{{ result.min_energy_distance}}</td>
+    <td>{{ result.created|date:"Y-m-d H:i" }}</td>
+</tr>
+{% endfor %}

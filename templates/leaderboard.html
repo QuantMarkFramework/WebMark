@@ -1,0 +1,49 @@
+{% extends "rest_framework/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block style %}
+{{ block.super }}
+<style type="text/css">
+  .clickable-row {
+    cursor: pointer;
+  }
+
+  .clickable-row:hover {
+    background-color: #eeeeee;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="starter-template">
+  <h1>Leaderboards</h1>
+
+  {% include "navbar.html" %}
+
+  <h2>{{ list_name }}<br/></h2>
+
+  <table width="100%">
+    {% if criterion == "min_energy" %}
+      {% include "leaderboards/min_energy.html" %}
+    {% elif criterion == "closest_minimum" %}
+      {% include "leaderboards/closest_minimum.html" %}
+    {% elif criterion == "smallest_variance" %}
+      {% include "leaderboards/min_variance.html" %}
+    {% endif %}
+  </table>
+  
+</div>
+{% endblock %}
+
+{% block script %}
+{{ block.super }}
+<script>
+  $(document).ready(function ($) {
+    $(".clickable-row").click(function () {
+      console.log($(this).data("href"))
+      window.location = $(this).data("href");
+    });
+  });
+</script>
+{% endblock %}

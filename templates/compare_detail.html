@@ -1,0 +1,95 @@
+{% extends "rest_framework/base.html" %}
+
+{% block title %}QuantMark2 comparison {{ result.id }}{% endblock %}
+
+{% block style %}
+{{ block.super }}
+
+{% endblock %}
+
+{% block content %}
+<div class="starter-template">
+    <h1>Experiment comparison:</h1>
+    <div style="width: 30%; float: left; margin: 5%">
+        <!--Maybe add a table of compared results here?-->
+    </div>
+    <div style="width: 50%; float: left; margin: 5%">
+        <div id="chart_compare_energy_distance"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{{ block.super }}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart', 'controls', 'line'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        drawEnergyDistanceChart()
+    };
+
+    function drawEnergyDistanceChart() {
+        var ids = {{ ids }}
+        var distances = {{ distances }}
+        var energies = {{ energies }}
+        var fci_distances = {{ fci_distances }}
+        var fci_energies = {{ fci_energies }}
+        
+        // "Safe" keyword needed so that django passes '' characters correctly.
+        var names = {{ names|safe }}
+        n = names.length
+
+        var data = new google.visualization.DataTable({
+            cols: [ { id: 'distance', label: 'Distance', type: 'number' },
+                    { id: 'fci', 'label': 'FCI def2-QZVPPD', type: 'number'} ]
+        });
+
+        for (i = 0; i < n; i++) {
+            label = names[i]
+            id = ids[i]
+            data.addColumn( {id: `energy_${id}`, label: label, type: 'number'} )
+        }
+
+        // Add FCI values
+        for (i = 0; i < fci_distances.length; i++) {
+            var row = Array(n + 2).fill(NaN)
+            row[0] = fci_distances[i]
+            row[1] = fci_energies[i]
+            data.addRow(row)
+        }
+
+        // Add results
+        for (i = 0; i < names.length; i++) {
+            for (j = 0; j < distances[i].length; j++) {
+                var row = Array(n + 2).fill(NaN)
+                row[0] = distances[i][j]
+                row[i + 2] = energies[i][j]
+                data.addRow(row)
+            }
+        }
+
+        var chart = new google.visualization.ChartWrapper({
+            'chartType': 'LineChart',
+            dataTable: data,
+            'containerId': 'chart_compare_energy_distance',
+            'options': {
+                'width': '100%',
+                height: 500,
+                pointsVisible: true,
+                title: 'Calculated energy against distance',
+                legend: { position: 'labeled' },
+                hAxis: { title: 'Distance', id: 'distance', type: 'number' },
+                vAxis: { title: "Energy", id: 'energy', type: 'number' },
+                explorer: {
+                keepInBounds: true,
+                },
+            }
+        });
+
+        chart.draw();
+    };
+
+</script>
+{% endblock %}

@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  qleader-db:
+    image: postgres:13.1
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    container_name: qleader-db
+
+  qleader-web:
+    build:
+      context: .
+    env_file:
+      - .env
+    command: sh -c "
+      python manage.py makemigrations qleader --noinput &&
+      python manage.py migrate --noinput &&
+      gunicorn -b 0.0.0.0:8000 webmark2.wsgi"
+      # python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - qleader-db
