@@ -15,57 +15,162 @@
   td.right {
     text-align: right;
   }
+
+  .dropdown-content {
+    display: none;
+  }
+
+  th {
+    text-align: center;
+    padding: 5px;
+  }
+
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="starter-template">
-  <h1>Experiment {{ result.id }} details:</h1>
-  <div style="width: 30%; float: left; margin: 5%">
-    <table width="100%">
-      <tr>
-        <td>Created: </td>
-        <td>{{ result.created|date:"Y-m-d H:i" }}</td>
-      </tr>
-      <tr>
-        <td>Basis set: </td>
-        <td>{{ result.basis_set }}</td>
-      </tr>
-      <tr>
-        <td>Transformation: </td>
-        <td>{{ result.transformation}}</td>
-      </tr>
-      <tr>
-        <td>Optimizer: </td>
-        <td>{{ result.optimizer }}</td>
-      </tr>
-      <tr>
-        <td>Tequila version: </td>
-        <td>{{ result.tqversion }}</td>
-      </tr>
-    </table>
-
-    <p>&nbsp;</p>
-
-    <table class="data" width="100%">
-      <thead>
-        <th class="right">Energy</th>
-        <th class="right">Dist.</th>
-        <th class="right">Fun</th>
-        <th class="right">NFEv</th>
-      </thead>
-      {% for run in runs %}
-      <tr>
-        <td class="right">{{ run.energy|floatformat:3 }}</td>
-        <td class="right">{{ run.distance|floatformat:3 }}</td>
-        <td class="right">{{ run.fun|floatformat:3 }}</td>
-        <td class="right">{{ run.nfev }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-    <hr />
+  <h1>Experiment {{ result.id }}</h1>
+  <div>
+    {% if request.user == result.user %}
+    <button id="deletion" type="button" class="btn btn-danger">Delete</button>
+    {% if result.public %}
+    <button id="make_private" type="button" class="btn btn-primary">Make private</button>
+    {% else %}
+    <button id="make_public" type="button" class="btn btn-primary">Make public</button>
+    {% endif %}
+    {% endif %}
+    <br><br>
   </div>
-  <div style="width: 50%; float: left; margin: 5%">
+  <div>
+    <p><b>About the experiment:</b></p>
+    {% if request.user == result.user %}
+    <label for="txtarea">Some relevant information about the experiment:</label><br>
+    <textarea id="txtarea" class="form-control" rows="3">{{ result.info }}</textarea><br><br>
+    <p>Please provide valid links starting either <b>https://</b> or <b>http://</b> (and if possible prefer the
+      <b>https://</b>).
+    </p>
+    <p>Also, please check after saving that the links work as intended!</p>
+    <label for="githubLink">GitHub repository:</label><br>
+    <input id="githubLink" type="text" size="100" value="{{ result.github_link }}"><br><br>
+    <label for="articleLink">Article:</label><br>
+    <input id="articleLink" type="text" size="100" value="{{ result.article_link }}"><br><br>
+    <button id="modify_info" type="button" class="btn btn-primary">Save</button>
+    <button id="modify_info" type="button" class="btn btn-secondary"
+    onclick="document.getElementById('txtarea').value = '{{ result.info }}';
+    document.getElementById('githubLink').value = '{{ result.github_link }}';
+    document.getElementById('articleLink').value = '{{ result.article_link }}';">
+      Reset fields
+    </button>
+    {% else %}
+    <div>
+      {{ result.info }}
+    </div>
+    {% endif %}
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Experiment data</h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>uploader / user: </b><a href="{{ path_prefix }}/user/{{ result.user.id }}">
+                {{ result.user }}
+              </a>
+            </li>
+            <li class="list-group-item"><b>date:</b> {{ result.created|date:"Y-m-d H:i" }}</li>
+            <li class="list-group-item"><b>GitHub repository:</b> <br><a href="{{ result.github_link }}">
+                {{ result.github_link }}
+              </a>
+            </li>
+            <li class="list-group-item"><b>article:</b> <br><a href="{{ result.article_link }}">
+                {{ result.article_link }}
+              </a>
+            </li>
+            <li class="list-group-item"><b>tequila version:</b> {{ result.tqversion }}</li>
+            <li class="list-group-item"><b>public:</b> {{ result.public }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Optimizer data</h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>optimizer:</b> {{ result.optimizer }}</li>
+            <li class="list-group-item"><b>optimizer parameters:</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Circuit data</h2>
+          <ul class="list-group list-group-flush">
+          {% if same_depth %}
+            <li class="list-group-item"><b>Elementary gate depth:</b> {{ runs.0.elementary_depth }}</li>
+            <li class="list-group-item"><b>Fermionic gate depth:</b> {{ runs.0.fermionic_depth }}</li>
+          {% else %}
+            <li class="list-group-item">Runs have different circuit depths!</li>
+          {% endif %}
+          {% if same_counts %}
+            <li class="list-group-item"><b>2-qubit gate count:</b> {{ runs.0.double_qubit_gates }}</li>
+            <li class="list-group-item"><b>1-qubit gate count:</b> {{ runs.0.single_qubit_gates }}</li>
+          {% else %}
+            <li class="list-group-item">Runs have varying gate counts!<br>
+              <button onclick="showList()">Show</button>
+              <div id="gateDropdown" class="dropdown-content">
+                <table>
+                  <tr>
+                    <th>Distance</th>
+                    <th>2-qubit gates</th>
+                    <th>1-qubit gates</th>
+                  </tr>
+                  {% for run in runs %}
+                    <tr>
+                      <td>{{ run.distance|floatformat:2 }}</td>
+                      <td>{{ run.single_qubit_gates }}</td>
+                      <td>{{ run.double_qubit_gates }}</td>
+                    </tr>
+                  {% endfor %}
+                </table>
+              </div>
+            </li>
+          {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Molecule data</h2>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>atoms:</b>
+            {% for atom in result.atoms %}
+              {{ atom }}
+            {% endfor %}
+            </li>
+            <li class="list-group-item"><b>basis set:</b> {{ result.basis_set }}</li>
+            <li class="list-group-item"><b>transformation:</b> {{ result.transformation }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Circuit</h2>
+      <p>Not implemented yet.</p>
+    </div>
+  </div>
+  <div>
+    <div id="arrays" data="{{ data }}"></div>
     <div id="chart_energy_distance"></div>
     <div id="chart_energy_iteration"></div>
   </div>
@@ -74,6 +179,8 @@
 
 {% block script %}
 {{ block.super }}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/js-cookie@3.0.0/dist/js.cookie.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
   google.charts.load('current', { 'packages': ['corechart', 'controls', 'line'] });
@@ -83,19 +190,21 @@
     drawEnergyDistanceChart()
     drawEnergyIterationChart()
   }
+  // Defining variables (which came along with the response) to be accessed by JS.
+  var name = "{{ name }}";
+  const obj = $('#arrays').attr('data');
+  const dataArray = JSON.parse(obj);
+  var energies = dataArray[0];
+  var distances = dataArray[1];
+  var energyIterations = dataArray[2];
+  var fci_distances = dataArray[3];
+  var fci_energies = dataArray[4];
 
   function drawEnergyDistanceChart() {
-    var distances = {{ distances }}
-    var energies = {{ energies }}
-    var fci_distances = {{ fci_distances }}
-    var fci_energies = {{ fci_energies }}
-
-    var name = "{{ name }}"
-
     var data = new google.visualization.DataTable({
-      cols: [ { id: 'distance', label: 'Distance', type: 'number' },
-              { id: 'energy', label: name, type: 'number' },
-              { id: 'fci', 'label': 'FCI def2-QZVPPD', type: 'number'} ]
+      cols: [{ id: 'distance', label: 'Distance', type: 'number' },
+      { id: 'energy', label: name, type: 'number' },
+      { id: 'fci', 'label': 'FCI def2-QZVPPD', type: 'number' }]
     });
 
     for (i = 0; i < energies.length; i++) {
@@ -112,10 +221,11 @@
       dataTable: data,
       'containerId': 'chart_energy_distance',
       'options': {
-        'width': '100%',
-        height: 500,
+        width: 1000,
+        height: 1000,
         pointsVisible: true,
         title: 'Calculated energy against distance',
+        titleTextStyle: { fontSize: 30 },
         legend: { position: 'labeled' },
         hAxis: { title: 'Distance', id: 'distance', type: 'number' },
         vAxis: { title: "Energy", id: 'energy', type: 'number' },
@@ -129,14 +239,12 @@
   }
 
   function drawEnergyIterationChart() {
-    var energyIterations = {{ iterationEnergies }}
-    var distances = {{ distances }}
 
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'Iteration');
 
     for (i = 0; i < energyIterations.length; i++) {
-      data.addColumn('number', distances[i])
+      data.addColumn('number', distances[i].toFixed(2))
     }
 
     maxIterations = Math.max.apply(null, energyIterations.map(elem => elem.length));
@@ -153,9 +261,10 @@
       dataTable: data,
       containerId: 'chart_energy_iteration',
       options: {
-        'width': '100%',
-        height: 500,
+        width: 1000,
+        height: 1000,
         title: 'Energy against iteration for each distance',
+        titleTextStyle: { fontSize: 30 },
         hAxis: { title: 'Iteration', id: 'iteration', type: 'number' },
         vAxis: { title: 'Energy', id: 'energy_per_iteration', type: 'number' },
         explorer: {
@@ -166,38 +275,101 @@
     chart.draw();
   }
 
-  /*
-    * Dummy control wrapper that can be later used to implement controls on the chart.
-    * Should be added as its own <div>.
-    * 
-    var controller = new google.visualization.ControlWrapper({
-      'controlType': 'CategoryFilter',
-      'containerId': 'controller',
-      'options': {
-        explorer: {
-          actions: ['dragToZoom', 'rightClickToReset'],
+
+  function showList() {
+    document.getElementById("gateDropdown").classList.toggle("show")
+  }
+
+
+  $('#deletion').click(function () {
+    if (window.confirm("Delete the experiment permanently?")) {
+      const csrftoken = Cookies.get('csrftoken')
+      return axios
+        .delete(`{{ path_prefix }}/api/{{ result.id }}/delete/`, {
+          headers: {
+            'X-CSRFToken': csrftoken
+          }
+        })
+        .then(response => {
+          console.log(response.status);
+          window.location = window.location.origin;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  });
+
+  $('#make_public').click(function () {
+    if (window.confirm("The experiment is currently set as private.\nDo you want to set it public?")) {
+      const csrftoken = Cookies.get('csrftoken')
+      return axios
+        .post(`{{ path_prefix }}/api/{{ result.id }}/change_publicity/`, {
+          'boolean': true
         },
-        filterColumnLabel: 'Name',
-        'ui': {
-          'chartType': 'LineChart',
-        }
-      }
-    });  
-    */
+          {
+            headers: {
+              'X-CSRFToken': csrftoken
+            }
+          })
+        .then(response => {
+          console.log(response.status);
+          window.location = window.location;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  });
 
-    /* 
-    * Dashboard needed to join ControlWrapper with ChartWrapper.
-    *
-    var dashboard = new google.visualization.Dashboard(
-      document.getElementById('dashboard_div'));
-    */
+  $('#make_private').click(function () {
+    if (window.confirm("The experiment is currently set as public.\nDo you want to set it private?")) {
+      const csrftoken = Cookies.get('csrftoken')
+      return axios
+        .post(`{{ path_prefix }}/api/{{ result.id }}/change_publicity/`, {
+          'boolean': false
+        },
+          {
+            headers: {
+              'X-CSRFToken': csrftoken
+            }
+          })
+        .then(response => {
+          console.log(response.status);
+          window.location = window.location;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  });
 
-    /* Joining the ControlWrapper and ChartWrapper to the dashboard and drawing the dashboard.
-    * This is to be activated, if a controller is to be used.
-    * 
-    dashboard.bind(controller, chart);
-    dashboard.draw(data);
-  */
-
+  $('#modify_info').click(function () {
+    if (window.confirm("Save the experiment's information?")) {
+      const csrftoken = Cookies.get('csrftoken')
+      return axios
+        .post(`{{ path_prefix }}/api/{{ result.id }}/modify_info/`, {
+          'info': $("#txtarea").val(),
+          'github_link': $("#githubLink").val(),
+          'article_link': $("#articleLink").val()
+        },
+          {
+            headers: {
+              'X-CSRFToken': csrftoken
+            }
+          })
+        .then(response => {
+          console.log(response.status);
+          if (response.data === 'invalid_url') {
+            window.alert("Please provide valid URL.");
+            return;
+          }
+          window.location = window.location;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  });
 </script>
 {% endblock %}

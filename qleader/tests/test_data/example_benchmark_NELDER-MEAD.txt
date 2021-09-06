@@ -1,0 +1,632 @@
+{
+    "energies": [
+        2.7158873908254826,
+        0.16417501091933032,
+        -0.5938277591847843,
+        -0.904361394544463,
+        -1.0429962747511703,
+        -1.1011282423609567,
+        -1.1173490349988586,
+        -1.1108503974239035,
+        -1.0919140409220964,
+        -1.0661086491853138,
+        -1.036538874869349,
+        -1.005106706387665,
+        -0.9731106155813923,
+        -0.9414806545013793,
+        -0.9108735543822684,
+        -0.8817324497321233,
+        -0.8543376267387818,
+        -0.8288481477185691,
+        -0.8053328446910958,
+        -0.7842043554767312
+    ],
+    "variables": [
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 ",
+        "(1, 0, 1, 0) : 0.0 "
+    ],
+    "histories": [
+        "{'energies': [2.7158873908254826, 2.715965732784176], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [2.7158873908254826, 2.715965732784176], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [0.16417501091933032, 0.16425422989625552], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [0.16417501091933032, 0.16425422989625552], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-0.5938277591847843, -0.5937471477624685], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-0.5938277591847843, -0.5937471477624685], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-0.904361394544463, -0.9042789646270974], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-0.904361394544463, -0.9042789646270974], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-1.0429962747511703, -1.0429116938669103], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-1.0429962747511703, -1.0429116938669103], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-1.1011282423609567, -1.1010412535351137], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-1.1011282423609567, -1.1010412535351137], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-1.1173490349988586, -1.1172594295963685], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-1.1173490349988586, -1.1172594295963685], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-1.1108503974239035, -1.110757994041713], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-1.1108503974239035, -1.110757994041713], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-1.0919140409220964, -1.0918186776278218], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-1.0919140409220964, -1.0918186776278218], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-1.0661086491853138, -1.066010187010815], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-1.0661086491853138, -1.066010187010815], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-1.036538874869349, -1.0364372059064553], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-1.036538874869349, -1.0364372059064553], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-1.005106706387665, -1.0050017606053252], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-1.005106706387665, -1.0050017606053252], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-0.9731106155813923, -0.9730023635739623], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-0.9731106155813923, -0.9730023635739623], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-0.9414806545013793, -0.9413691060641821], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-0.9414806545013793, -0.9413691060641821], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-0.9108735543822684, -0.9107587541382155], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-0.9108735543822684, -0.9107587541382155], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-0.8817324497321233, -0.8816144712615237], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-0.8817324497321233, -0.8816144712615237], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-0.8543376267387818, -0.8542165663576432], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-0.8543376267387818, -0.8542165663576432], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-0.8288481477185691, -0.828724118618632], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-0.8288481477185691, -0.828724118618632], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-0.8053328446910958, -0.8052059717899758], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-0.8053328446910958, -0.8052059717899758], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}",
+        "{'energies': [-0.7842043554767312, -0.7840748239848312], 'gradients': [], 'angles': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'energies_calls': [], 'gradients_calls': [], 'angles_calls': [], 'energy_evaluations': [-0.7842043554767312, -0.7840748239848312], 'angles_evaluations': [{(1, 0, 1, 0): 0.0}, {(1, 0, 1, 0): 0.00025}], 'hessians': []}"
+    ],
+    "scipy_results": [
+        "{'fun': '2.7158873908254826', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([2.71588739, 2.71596573]))'}",
+        "{'fun': '0.16417501091933032', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([0.16417501, 0.16425423]))'}",
+        "{'fun': '-0.5938277591847843', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-0.59382776, -0.59374715]))'}",
+        "{'fun': '-0.904361394544463', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-0.90436139, -0.90427896]))'}",
+        "{'fun': '-1.0429962747511703', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-1.04299627, -1.04291169]))'}",
+        "{'fun': '-1.1011282423609567', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-1.10112824, -1.10104125]))'}",
+        "{'fun': '-1.1173490349988586', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-1.11734903, -1.11725943]))'}",
+        "{'fun': '-1.1108503974239035', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-1.1108504 , -1.11075799]))'}",
+        "{'fun': '-1.0919140409220964', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-1.09191404, -1.09181868]))'}",
+        "{'fun': '-1.0661086491853138', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-1.06610865, -1.06601019]))'}",
+        "{'fun': '-1.036538874869349', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-1.03653887, -1.03643721]))'}",
+        "{'fun': '-1.005106706387665', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-1.00510671, -1.00500176]))'}",
+        "{'fun': '-0.9731106155813923', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-0.97311062, -0.97300236]))'}",
+        "{'fun': '-0.9414806545013793', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-0.94148065, -0.94136911]))'}",
+        "{'fun': '-0.9108735543822684', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-0.91087355, -0.91075875]))'}",
+        "{'fun': '-0.8817324497321233', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-0.88173245, -0.88161447]))'}",
+        "{'fun': '-0.8543376267387818', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-0.85433763, -0.85421657]))'}",
+        "{'fun': '-0.8288481477185691', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-0.82884815, -0.82872412]))'}",
+        "{'fun': '-0.8053328446910958', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-0.80533284, -0.80520597]))'}",
+        "{'fun': '-0.7842043554767312', 'nit': '1', 'nfev': '2', 'status': '0', 'success': 'True', 'message': 'Optimization terminated successfully.', 'x': '[0.]', 'final_simplex': '(array([[0.     ],\\n       [0.00025]]), array([-0.78420436, -0.78407482]))'}"
+    ],
+    "hamiltonian": [
+        "+5.0607+0.3008Z(0)+0.3008Z(0)Z(1)-0.7265Z(2)-0.7265Z(1)Z(2)Z(3)+0.1930Z(1)+0.0390Y(0)Z(1)Y(2)Z(3)+0.0390X(0)Z(1)X(2)+0.0390X(0)Z(1)X(2)Z(3)+0.0390Y(0)Z(1)Y(2)+0.1520Z(0)Z(2)+0.1911Z(0)Z(1)Z(2)Z(3)+0.1911Z(0)Z(1)Z(2)+0.1520Z(0)Z(2)Z(3)+0.2031Z(1)Z(3)",
+        "+2.3103+0.2822Z(0)+0.2822Z(0)Z(1)-0.6483Z(2)-0.6483Z(1)Z(2)Z(3)+0.1910Z(1)+0.0395Y(0)Z(1)Y(2)Z(3)+0.0395X(0)Z(1)X(2)+0.0395X(0)Z(1)X(2)Z(3)+0.0395Y(0)Z(1)Y(2)+0.1494Z(0)Z(2)+0.1889Z(0)Z(1)Z(2)Z(3)+0.1889Z(0)Z(1)Z(2)+0.1494Z(0)Z(2)Z(3)+0.2003Z(1)Z(3)",
+        "+1.3007+0.2587Z(0)+0.2587Z(0)Z(1)-0.5500Z(2)-0.5500Z(1)Z(2)Z(3)+0.1880Z(1)+0.0402Y(0)Z(1)Y(2)Z(3)+0.0402X(0)Z(1)X(2)+0.0402X(0)Z(1)X(2)Z(3)+0.0402Y(0)Z(1)Y(2)+0.1453Z(0)Z(2)+0.1855Z(0)Z(1)Z(2)Z(3)+0.1855Z(0)Z(1)Z(2)+0.1453Z(0)Z(2)Z(3)+0.1962Z(1)Z(3)",
+        "+0.7408+0.2353Z(0)+0.2353Z(0)Z(1)-0.4535Z(2)-0.4535Z(1)Z(2)Z(3)+0.1842Z(1)+0.0411Y(0)Z(1)Y(2)Z(3)+0.0411X(0)Z(1)X(2)+0.0411X(0)Z(1)X(2)Z(3)+0.0411Y(0)Z(1)Y(2)+0.1402Z(0)Z(2)+0.1813Z(0)Z(1)Z(2)Z(3)+0.1813Z(0)Z(1)Z(2)+0.1402Z(0)Z(2)Z(3)+0.1914Z(1)Z(3)",
+        "+0.3798+0.2139Z(0)+0.2139Z(0)Z(1)-0.3691Z(2)-0.3691Z(1)Z(2)Z(3)+0.1799Z(1)+0.0422Y(0)Z(1)Y(2)Z(3)+0.0422X(0)Z(1)X(2)+0.0422X(0)Z(1)X(2)Z(3)+0.0422Y(0)Z(1)Y(2)+0.1346Z(0)Z(2)+0.1768Z(0)Z(1)Z(2)Z(3)+0.1768Z(0)Z(1)Z(2)+0.1346Z(0)Z(2)Z(3)+0.1862Z(1)Z(3)",
+        "+0.1324+0.1948Z(0)+0.1948Z(0)Z(1)-0.2992Z(2)-0.2992Z(1)Z(2)Z(3)+0.1753Z(1)+0.0434Y(0)Z(1)Y(2)Z(3)+0.0434X(0)Z(1)X(2)+0.0434X(0)Z(1)X(2)Z(3)+0.0434Y(0)Z(1)Y(2)+0.1288Z(0)Z(2)+0.1722Z(0)Z(1)Z(2)Z(3)+0.1722Z(0)Z(1)Z(2)+0.1288Z(0)Z(2)Z(3)+0.1811Z(1)Z(3)",
+        "-0.0421+0.1777Z(0)+0.1777Z(0)Z(1)-0.2427Z(2)-0.2427Z(1)Z(2)Z(3)+0.1706Z(1)+0.0448Y(0)Z(1)Y(2)Z(3)+0.0448X(0)Z(1)X(2)+0.0448X(0)Z(1)X(2)Z(3)+0.0448Y(0)Z(1)Y(2)+0.1229Z(0)Z(2)+0.1677Z(0)Z(1)Z(2)Z(3)+0.1677Z(0)Z(1)Z(2)+0.1229Z(0)Z(2)Z(3)+0.1763Z(1)Z(3)",
+        "-0.1673+0.1625Z(0)+0.1625Z(0)Z(1)-0.1974Z(2)-0.1974Z(1)Z(2)Z(3)+0.1658Z(1)+0.0462Y(0)Z(1)Y(2)Z(3)+0.0462X(0)Z(1)X(2)+0.0462X(0)Z(1)X(2)Z(3)+0.0462Y(0)Z(1)Y(2)+0.1172Z(0)Z(2)+0.1634Z(0)Z(1)Z(2)Z(3)+0.1634Z(0)Z(1)Z(2)+0.1172Z(0)Z(2)Z(3)+0.1717Z(1)Z(3)",
+        "-0.2591+0.1491Z(0)+0.1491Z(0)Z(1)-0.1607Z(2)-0.1607Z(1)Z(2)Z(3)+0.1611Z(1)+0.0476Y(0)Z(1)Y(2)Z(3)+0.0476X(0)Z(1)X(2)+0.0476X(0)Z(1)X(2)Z(3)+0.0476Y(0)Z(1)Y(2)+0.1116Z(0)Z(2)+0.1593Z(0)Z(1)Z(2)Z(3)+0.1593Z(0)Z(1)Z(2)+0.1116Z(0)Z(2)Z(3)+0.1674Z(1)Z(3)",
+        "-0.3276+0.1372Z(0)+0.1372Z(0)Z(1)-0.1304Z(2)-0.1304Z(1)Z(2)Z(3)+0.1566Z(1)+0.0492Y(0)Z(1)Y(2)Z(3)+0.0492X(0)Z(1)X(2)+0.0492X(0)Z(1)X(2)Z(3)+0.0492Y(0)Z(1)Y(2)+0.1062Z(0)Z(2)+0.1554Z(0)Z(1)Z(2)Z(3)+0.1554Z(0)Z(1)Z(2)+0.1062Z(0)Z(2)Z(3)+0.1633Z(1)Z(3)",
+        "-0.3797+0.1265Z(0)+0.1265Z(0)Z(1)-0.1049Z(2)-0.1049Z(1)Z(2)Z(3)+0.1523Z(1)+0.0508Y(0)Z(1)Y(2)Z(3)+0.0508X(0)Z(1)X(2)+0.0508X(0)Z(1)X(2)Z(3)+0.0508Y(0)Z(1)Y(2)+0.1010Z(0)Z(2)+0.1518Z(0)Z(1)Z(2)Z(3)+0.1518Z(0)Z(1)Z(2)+0.1010Z(0)Z(2)Z(3)+0.1594Z(1)Z(3)",
+        "-0.4196+0.1170Z(0)+0.1170Z(0)Z(1)-0.0832Z(2)-0.0832Z(1)Z(2)Z(3)+0.1483Z(1)+0.0524Y(0)Z(1)Y(2)Z(3)+0.0524X(0)Z(1)X(2)+0.0524X(0)Z(1)X(2)Z(3)+0.0524Y(0)Z(1)Y(2)+0.0960Z(0)Z(2)+0.1485Z(0)Z(1)Z(2)Z(3)+0.1485Z(0)Z(1)Z(2)+0.0960Z(0)Z(2)Z(3)+0.1557Z(1)Z(3)",
+        "-0.4503+0.1084Z(0)+0.1084Z(0)Z(1)-0.0648Z(2)-0.0648Z(1)Z(2)Z(3)+0.1446Z(1)+0.0541Y(0)Z(1)Y(2)Z(3)+0.0541X(0)Z(1)X(2)+0.0541X(0)Z(1)X(2)Z(3)+0.0541Y(0)Z(1)Y(2)+0.0913Z(0)Z(2)+0.1454Z(0)Z(1)Z(2)Z(3)+0.1454Z(0)Z(1)Z(2)+0.0913Z(0)Z(2)Z(3)+0.1522Z(1)Z(3)",
+        "-0.4738+0.1005Z(0)+0.1005Z(0)Z(1)-0.0490Z(2)-0.0490Z(1)Z(2)Z(3)+0.1412Z(1)+0.0558Y(0)Z(1)Y(2)Z(3)+0.0558X(0)Z(1)X(2)+0.0558X(0)Z(1)X(2)Z(3)+0.0558Y(0)Z(1)Y(2)+0.0868Z(0)Z(2)+0.1425Z(0)Z(1)Z(2)Z(3)+0.1425Z(0)Z(1)Z(2)+0.0868Z(0)Z(2)Z(3)+0.1489Z(1)Z(3)",
+        "-0.4918+0.0935Z(0)+0.0935Z(0)Z(1)-0.0356Z(2)-0.0356Z(1)Z(2)Z(3)+0.1382Z(1)+0.0574Y(0)Z(1)Y(2)Z(3)+0.0574X(0)Z(1)X(2)+0.0574X(0)Z(1)X(2)Z(3)+0.0574Y(0)Z(1)Y(2)+0.0825Z(0)Z(2)+0.1399Z(0)Z(1)Z(2)Z(3)+0.1399Z(0)Z(1)Z(2)+0.0825Z(0)Z(2)Z(3)+0.1459Z(1)Z(3)",
+        "-0.5055+0.0871Z(0)+0.0871Z(0)Z(1)-0.0243Z(2)-0.0243Z(1)Z(2)Z(3)+0.1355Z(1)+0.0590Y(0)Z(1)Y(2)Z(3)+0.0590X(0)Z(1)X(2)+0.0590X(0)Z(1)X(2)Z(3)+0.0590Y(0)Z(1)Y(2)+0.0785Z(0)Z(2)+0.1375Z(0)Z(1)Z(2)Z(3)+0.1375Z(0)Z(1)Z(2)+0.0785Z(0)Z(2)Z(3)+0.1430Z(1)Z(3)",
+        "-0.5159+0.0813Z(0)+0.0813Z(0)Z(1)-0.0146Z(2)-0.0146Z(1)Z(2)Z(3)+0.1331Z(1)+0.0605Y(0)Z(1)Y(2)Z(3)+0.0605X(0)Z(1)X(2)+0.0605X(0)Z(1)X(2)Z(3)+0.0605Y(0)Z(1)Y(2)+0.0748Z(0)Z(2)+0.1353Z(0)Z(1)Z(2)Z(3)+0.1353Z(0)Z(1)Z(2)+0.0748Z(0)Z(2)Z(3)+0.1404Z(1)Z(3)",
+        "-0.5237+0.0761Z(0)+0.0761Z(0)Z(1)-0.0063Z(2)-0.0063Z(1)Z(2)Z(3)+0.1309Z(1)+0.0620Y(0)Z(1)Y(2)Z(3)+0.0620X(0)Z(1)X(2)+0.0620X(0)Z(1)X(2)Z(3)+0.0620Y(0)Z(1)Y(2)+0.0713Z(0)Z(2)+0.1333Z(0)Z(1)Z(2)Z(3)+0.1333Z(0)Z(1)Z(2)+0.0713Z(0)Z(2)Z(3)+0.1380Z(1)Z(3)",
+        "-0.5296+0.0714Z(0)+0.0714Z(0)Z(1)+0.0007Z(2)+0.0007Z(1)Z(2)Z(3)+0.1290Z(1)+0.0634Y(0)Z(1)Y(2)Z(3)+0.0634X(0)Z(1)X(2)+0.0634X(0)Z(1)X(2)Z(3)+0.0634Y(0)Z(1)Y(2)+0.0681Z(0)Z(2)+0.1315Z(0)Z(1)Z(2)Z(3)+0.1315Z(0)Z(1)Z(2)+0.0681Z(0)Z(2)Z(3)+0.1357Z(1)Z(3)",
+        "-0.5339+0.0674Z(0)+0.0674Z(0)Z(1)+0.0065Z(2)+0.0065Z(1)Z(2)Z(3)+0.1274Z(1)+0.0648Y(0)Z(1)Y(2)Z(3)+0.0648X(0)Z(1)X(2)+0.0648X(0)Z(1)X(2)Z(3)+0.0648Y(0)Z(1)Y(2)+0.0651Z(0)Z(2)+0.1298Z(0)Z(1)Z(2)Z(3)+0.1298Z(0)Z(1)Z(2)+0.0651Z(0)Z(2)Z(3)+0.1337Z(1)Z(3)"
+    ],
+    "ansatz": [
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n",
+        "circuit: \nX(target=(0,))\nFermionicExcitation(target=(0, 1, 2, 3), control=(), parameter=f([(1, 0, 1, 0)]))\n"
+    ],
+    "optimizer": "NELDER-MEAD",
+    "qubits": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+    ],
+    "fermionic_depth": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+    ],
+    "elementary_depth": [
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113,
+        113
+    ],
+    "single_qubit": [
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465,
+        465
+    ],
+    "double_qubit": [
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960,
+        960
+    ],
+    "molecule": [
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 0.1 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.902078 \n1 : 0B1U energy = +1.733552 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 0.2 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.858874 \n1 : 0B1U energy = +1.572868 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 0.30000000000000004 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.802892 \n1 : 0B1U energy = +1.369254 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 0.4 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.745235 \n1 : 0B1U energy = +1.167399 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 0.5 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.690849 \n1 : 0B1U energy = +0.988451 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 0.6 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.640903 \n1 : 0B1U energy = +0.837812 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 0.7000000000000001 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.595488 \n1 : 0B1U energy = +0.713941 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 0.8 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.554520 \n1 : 0B1U energy = +0.612474 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 0.9 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.517693 \n1 : 0B1U energy = +0.528407 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 1.0 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.484469 \n1 : 0B1U energy = +0.457494 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 1.1 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.454251 \n1 : 0B1U energy = +0.396739 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 1.2000000000000002 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.426544 \n1 : 0B1U energy = +0.344206 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 1.3000000000000003 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.401000 \n1 : 0B1U energy = +0.298601 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 1.4000000000000001 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.377390 \n1 : 0B1U energy = +0.258969 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 1.5000000000000002 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.355556 \n1 : 0B1U energy = +0.224523 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 1.6 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.335384 \n1 : 0B1U energy = +0.194580 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 1.7000000000000002 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.316781 \n1 : 0B1U energy = +0.168538 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 1.8000000000000003 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.299664 \n1 : 0B1U energy = +0.145868 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 1.9000000000000001 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.283955 \n1 : 0B1U energy = +0.126110 \n",
+        "<class 'tequila.quantumchemistry.psi4_interface.QuantumChemistryPsi4'>\nQubit Encoding\nBravyiKitaev\n\nParameters\nbasis_set       : sto-3g          \ngeometry        : H 0.0 0.0 0.0\nH 0.0 0.0 1.9980000000000002 \ndescription     :                 \nmultiplicity    : 1               \ncharge          : 0               \nclosed_shell    : True            \nname            : molecule        \n\nPsi4 Data\nPoint Group (full) : d_inf_h         \nPoint Group (used) : d2h             \nnirrep          : 8 \nirreps          : ['AG', 'B1G', 'B2G', 'B3G', 'AU', 'B1U', 'B2U', 'B3U'] \nmos per irrep   : [1, 0, 0, 0, 0, 1, 0, 0] \n\nOrbitals:\n0 : 0AG energy = -0.269847 \n1 : 0B1U energy = +0.109189 \n"
+    ],
+    "tqversion": "1.5.0",
+    "geometries": [
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.1
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.2
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.30000000000000004
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.4
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.5
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.6
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.7000000000000001
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.8
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.9
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    1.0
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    1.1
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    1.2000000000000002
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    1.3000000000000003
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    1.4000000000000001
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    1.5000000000000002
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    1.6
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    1.7000000000000002
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    1.8000000000000003
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    1.9000000000000001
+                ]
+            ]
+        ],
+        [
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    0.0
+                ]
+            ],
+            [
+                "H",
+                [
+                    0.0,
+                    0.0,
+                    1.9980000000000002
+                ]
+            ]
+        ]
+    ],
+    "basis_set": "sto-3g",
+    "transformation": "BravyiKitaev"
+}

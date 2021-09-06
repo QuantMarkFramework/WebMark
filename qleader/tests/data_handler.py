@@ -2,12 +2,14 @@ import os
 import sys
 import ast
 import json
+from rest_framework.test import force_authenticate, APIRequestFactory
+from qleader import views
 
-# To see how Django REST framework can be tested (and has been in here)
+# To see how Django REST framework can be tested (and has been done in here)
 # follow the link https://www.django-rest-framework.org/api-guide/testing
 
 
-# Read a file located at the given path and return the json object in the file.
+# Read a file located at the given path and return the json object from the file.
 def create_test_data_from_example(path):
     return ast.literal_eval(
         open(os.path.join(sys.path[0], path), "r").read()
@@ -15,12 +17,21 @@ def create_test_data_from_example(path):
 
 
 # Send test data to API (".../api/") and return the response.
-# More about DRF's API test cases (which the 'self' should have)
-# is at https://www.django-rest-framework.org/api-guide/testing/#api-test-cases
+# More about DRF's API test cases is at
+# https://www.django-rest-framework.org/api-guide/testing/#api-test-cases
 def post_data(self, data):
-    response = self.client.post("/api/", data=json.dumps(data), format='json')
+    factory = APIRequestFactory()
+    request = factory.post("/api/", data=json.dumps(data), format='json')
+    view = views.result_receiver
+    force_authenticate(request, user=self.user)
+    response = view(request)
+
     return response
 
+
+special_examples = {
+    "BENCHMARK_NELDER-MEAD": create_test_data_from_example("tests/test_data/example_benchmark_NELDER-MEAD.txt"), # noqa
+}
 
 scipy_examples = {
     "NELDER-MEAD": create_test_data_from_example("tests/test_data/example_NELDER-MEAD.txt"),
@@ -50,7 +61,15 @@ examples = []
 
 # Calls the post_data method for all test examples
 def post_data_all_examples(self):
-    for data in scipy_examples.values():
-        post_data(self, data)
-    for data in gradient_examples.values():
-        post_data(self, data)
+    [post_data(self, data) for data in scipy_examples.values()]
+    [post_data(self, data) for data in gradient_examples.values()]
+
+
+# Helper method
+def get_home(self, user):
+    request = self.factory.get("")
+    force_authenticate(request, user=user)
+    view = views.home
+    response = view(request)
+
+    return response

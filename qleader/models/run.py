@@ -16,9 +16,11 @@ class Run(models.Model):
     angles_calls = TextField(default="")
     hamiltonian = TextField(default="")
     ansatz = TextField(default="")
-    molecule = TextField(default="")
     qubits = SmallIntegerField(default=0)
-    gate_depth = SmallIntegerField(default=0)
+    fermionic_depth = SmallIntegerField(default=0)
+    elementary_depth = SmallIntegerField(default=0)
+    single_qubit_gates = SmallIntegerField(default=0)
+    double_qubit_gates = SmallIntegerField(default=0)
 
     class Meta:
         abstract = True

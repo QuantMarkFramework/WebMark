@@ -2,33 +2,45 @@ import ast
 import json
 import qleader.initializers as initializers
 from rest_framework.test import APITransactionTestCase
-from qleader.tests.data_handler import post_data_all_examples, scipy_examples, gradient_examples
+from qleader.tests.data_handler import (post_data_all_examples, get_home, scipy_examples,
+                                        gradient_examples, special_examples)
+from rest_framework.test import force_authenticate, APIRequestFactory
+from django.contrib.auth.models import User
+from qleader import views
 
 
 # The test class for testing the initializers.py
 # The class uses DRF's APITransactionTestCase that
 # has tools for testing and it provides data handling
-# while testing. There is no need for setting up a
-# separate database. See the documentation at
+# while testing. See the documentation at
 # https://www.django-rest-framework.org/api-guide/testing
 class InitializersTests(APITransactionTestCase):
+
+    def setup_method(self, method):
+        self.factory = APIRequestFactory()
+        self.user, self.created = User.objects.get_or_create(username='Testi-Teppo')
 
     # Test that Result object has correct fields after creation.
     def test_creating_results_based_on_examples(self):
         post_data_all_examples(self)
-        response = self.client.get("")
+        response = get_home(self, self.user)
+
         n = len(response.data["results"])
         assert n == len(scipy_examples) + len(gradient_examples)
         for i in range(0, n):
             # Find the specific Result based on id in the query data
             result_id = response.data["results"][i]["id"]
-            result = self.client.get("/api/" + str(result_id) + "/").data["result"]
+            request = self.factory.get("/api/" + str(result_id) + "/")
+            view = views.detail
+            force_authenticate(request, user=self.user)
+            result = view(request, result_id=result_id).data["result"]
 
             # Check that every field is not its default value. This indicates that the Result
             # has that field and there is data in it.
             assert result.created is not None
             assert result.optimizer, result.tqversion != ""
             assert result.basis_set, result.transformation != ""
+            assert result.molecule != ""
             assert result.min_energy, result.min_energy_distance != float("inf")
             assert result.variance_from_fci != float("inf")
             assert result.min_energy_qubits != 0
@@ -37,10 +49,10 @@ class InitializersTests(APITransactionTestCase):
     def assert_Run_fields_similar_to_all(self, runs):
         for run in runs:
             assert run.distance, run.energy is not None
-            assert run.gate_depth != 0
+            assert run.elementary_depth != 0
             fields_should_be_unempty = [run.variables, run.energies, run.gradients, run.angles,
                                         run.energies_calls, run.gradients_calls, run.angles_calls,
-                                        run.hamiltonian, run.ansatz, run.molecule, run.qubits]
+                                        run.hamiltonian, run.ansatz, run.qubits]
             for field in fields_should_be_unempty:
                 assert field != ""
 
@@ -78,13 +90,16 @@ class InitializersTests(APITransactionTestCase):
     # and to be more clear.
     def test_created_results_have_correct_runs(self):
         post_data_all_examples(self)
-        response = self.client.get("")
+        response = get_home(self, self.user)
         n = len(response.data["results"])
         assert n == len(scipy_examples) + len(gradient_examples)
         for i in range(0, n):
             # Find the specific Result based on id in the query data
             result_id = response.data["results"][i]["id"]
-            response_detail = self.client.get("/api/" + str(result_id) + "/")
+            request = self.factory.get("/api/" + str(result_id) + "/")
+            view = views.detail
+            force_authenticate(request, user=self.user)
+            response_detail = view(request, result_id=result_id)
             runs = response_detail.data["runs"]  # The Runs of the Result
             self.assert_Run_fields_similar_to_all(runs)
             # Get the optimizer of the Result
@@ -111,7 +126,7 @@ class InitializersTests(APITransactionTestCase):
         assert energy_list[0] == 0.16417501091932965
 
     def test_get_hamiltonian(self):
-        hamiltonian = initializers.get_hamiltonian(scipy_examples["NELDER-MEAD"], 0)
+        hamiltonian = scipy_examples["NELDER-MEAD"]["hamiltonian"][0]
         assert "+5.0607+0.3008Z(0)+0.3008Z(0)Z(1)-0.7265Z(2)" in hamiltonian
 
     def test_scipy_results_returns_dict(self):
@@ -174,3 +189,11 @@ class InitializersTests(APITransactionTestCase):
             gradient_examples["SGD"], 0)['moments']
         assert '[(array([0.]), array([0.])), (array([0.]),' in initializers.get_moments(
             gradient_examples["SPSA"], 0)['moments']
+
+    def test_non_benchmark_distances_refused(self):
+        result = initializers.create_result(scipy_examples["NELDER-MEAD"], self.user)
+        assert not result.include_in_variance
+
+    def test_benchmark_distances_accepted(self):
+        result = initializers.create_result(special_examples["BENCHMARK_NELDER-MEAD"], self.user)
+        assert result.include_in_variance

@@ -1,0 +1,30 @@
+{% block content %}
+<h2>My uploads</h2>
+
+<table width="100%">
+    <thead>
+        <th>ID</th>
+        <th>Basis set</th>
+        <th>Transformation</th>
+        <th>Optimizer</th>
+        <th>Date</th>
+        <th>Public</th>
+        <th>Compare</th>
+    </thead>
+    {% for own_result in own_results %}
+    <tr class='clickable-row' data-href='{{ path_prefix }}/api/{{ own_result.id }}/'>
+        <td>{{ own_result.id }}</td>
+        <td>{{ own_result.basis_set }}</td>
+        <td>{{ own_result.transformation }}</td>
+        <td>{{ own_result.optimizer }}</td>
+        <td>{{ own_result.created|date:"Y-m-d H:i" }}</td>
+        <td>
+            {% if own_result.public %}
+            ✓
+            {% endif %}
+        </td>
+        <td class='checkbox-td'><input type="checkbox" id="{{ own_result.id }}">&nbsp;</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

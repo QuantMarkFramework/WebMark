@@ -4,18 +4,49 @@
 
 {% block style %}
 {{ block.super }}
+<style type="text/css">
+    .clickable-row {
+    cursor: pointer;
+  }
 
+  .clickable-row:hover {
+    background-color: #eeeeee;
+  }
+
+</style>
 {% endblock %}
 
 {% block content %}
+<div id=arrays data="{{ data }}"></div>
+<div id=equivalent data={{equivalent}}></div>
 <div class="starter-template">
     <h1>Experiment comparison:</h1>
-    <div style="width: 30%; float: left; margin: 5%">
-        <!--Maybe add a table of compared results here?-->
+    <div>
+        <div style="width: 60%; float: left; margin: 0%">
+            <div id="chart_compare_energy_distance"></div>
+        </div>
+        {% if equivalent == "true" %}
+        <div style="width: 40%; float: left; margin: 0%">
+            <div id="chart_error_vs_depth"></div>
+        </div>
+        {% else %}
+        <p>Error vs gate depth graph not available results have different basis sets.</p>
+        {% endif %}
     </div>
-    <div style="width: 50%; float: left; margin: 5%">
-        <div id="chart_compare_energy_distance"></div>
-    </div>
+</div>
+<div>
+    <table width="100%">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+        </thead>
+        {% for id in data.0 %}
+        <tr class='clickable-row' data-href='{{ path_prefix }}/api/{{ id.0 }}/'>
+            <td>{{ id.0 }}</td>
+            <td>{{ id.1 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
 {% endblock %}
 
@@ -28,18 +59,29 @@
 
     function drawChart() {
         drawEnergyDistanceChart()
+        if ($('#equivalent').attr('data')) {
+            drawErrorVsDepthChart()
+        }
     };
 
+    // ' -> " for JSON.parse to work.
+    const obj = $('#arrays').attr('data').replace(/'/g, '"');
+    const dataArray = JSON.parse(obj);
+
+    var identifiers = dataArray[0];
+    var basisSet = dataArray[1];
+    var energies = dataArray[2];
+    var distances = dataArray[3];
+    var fciDistances = dataArray[4];
+    var fciEnergies = dataArray[5];
+    var groundTruth = dataArray[6];
+    var experimentTruth = dataArray[7];
+    var experimentApprox = dataArray[8];
+    var depths = dataArray[9];
+    var minEnergies = dataArray[10];
+
     function drawEnergyDistanceChart() {
-        var ids = {{ ids }}
-        var distances = {{ distances }}
-        var energies = {{ energies }}
-        var fci_distances = {{ fci_distances }}
-        var fci_energies = {{ fci_energies }}
-        
-        // "Safe" keyword needed so that django passes '' characters correctly.
-        var names = {{ names|safe }}
-        n = names.length
+        const n = identifiers.length
 
         var data = new google.visualization.DataTable({
             cols: [ { id: 'distance', label: 'Distance', type: 'number' },
@@ -47,21 +89,21 @@
         });
 
         for (i = 0; i < n; i++) {
-            label = names[i]
-            id = ids[i]
+            label = identifiers[i][1]
+            id = identifiers[i][0]
             data.addColumn( {id: `energy_${id}`, label: label, type: 'number'} )
         }
 
         // Add FCI values
-        for (i = 0; i < fci_distances.length; i++) {
+        for (i = 0; i < fciDistances.length; i++) {
             var row = Array(n + 2).fill(NaN)
-            row[0] = fci_distances[i]
-            row[1] = fci_energies[i]
+            row[0] = fciDistances[i]
+            row[1] = fciEnergies[i]
             data.addRow(row)
         }
 
         // Add results
-        for (i = 0; i < names.length; i++) {
+        for (i = 0; i < n; i++) {
             for (j = 0; j < distances[i].length; j++) {
                 var row = Array(n + 2).fill(NaN)
                 row[0] = distances[i][j]
@@ -79,17 +121,87 @@
                 height: 500,
                 pointsVisible: true,
                 title: 'Calculated energy against distance',
-                legend: { position: 'labeled' },
+                legend: { position: 'right' },
                 hAxis: { title: 'Distance', id: 'distance', type: 'number' },
-                vAxis: { title: "Energy", id: 'energy', type: 'number' },
+                vAxis: { title: 'Energy', id: 'energy', type: 'number' },
                 explorer: {
                 keepInBounds: true,
+                maxZoomIn: 0.05
                 },
             }
         });
 
         chart.draw();
     };
+
+    function drawErrorVsDepthChart() {
+        const n = identifiers.length
+        const truthError = experimentTruth - groundTruth
+        const approxError = experimentApprox - groundTruth
+        const energyErrors = minEnergies.map(elem => elem - groundTruth)
+
+        var data = new google.visualization.DataTable({
+            cols: [ { id: 'error', label: 'Error from "ground truth"', type: 'number'},
+                    { id: 'depth', label: 'Results', type: 'number'},
+                    { id: 'name', type: 'string', role: 'tooltip'},
+                    { id: 'fci', label: 'FCI', type: 'number'},
+                    { id: 'hf', label: 'Hartree-Fock', type: 'number'} ]
+        })
+
+        // Add scatter points
+        for (i = 0; i < n; i++) { 
+            data.addRow([energyErrors[i], depths[i], identifiers[i][1], null, null])
+        }
+
+        // Add FCI line
+        FCITicks = [0, Math.max(...depths)*2]
+        FCITicks.forEach(elem => {
+            data.addRow([truthError, null, null, elem, null])
+        });
+
+        // Add HF line
+        HFTicks = [0, Math.max(...depths)*2]
+        HFTicks.forEach(elem => {
+            data.addRow([approxError, null, null, null, elem])
+        });
+
+        var chart = new google.visualization.ChartWrapper({
+            'chartType': 'ComboChart',
+            dataTable: data,
+            'containerId': 'chart_error_vs_depth',
+            'options': {
+                'width': '100%',
+                height: 500,
+                seriesType: 'scatter',
+                series: {
+                    1: {
+                        color: 'green',
+                        type: 'line'
+                    },
+                    2: {
+                        color: 'red',
+                        type: 'line'
+                    }
+                },
+                title: 'Error vs gate depth, FCI and HF with: '.concat(basisSet),
+                legend: { position: 'bottom' },
+                hAxis: { title: 'Error from ground truth', id: 'error', type: 'number' },
+                vAxis: { title: 'Fermionic depth', id: 'depth', type: 'number' },
+                explorer: {
+                keepInBounds: false,
+                maxZoomIn: 0.05
+                },
+            }
+        })
+
+        chart.draw();
+    }
+
+    $(document).ready(function ($) {
+        $(".clickable-row").click(function (event) {
+            window.location = $(this).data("href")
+        });
+    });
 
 </script>
 {% endblock %}

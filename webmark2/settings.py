@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'qleader.apps.QleaderConfig',
     'social_django',
-    ]
+    'rest_framework.authtoken',
+    'django_extensions',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,6 +76,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
+                'qleader.context_processors.pass_path_prefix',
+                'qleader.context_processors.social_auth_services_status',
             ],
         },
     },
@@ -124,12 +128,12 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-ROOT_DIR = os.getenv("ROOT_DIR", '')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = 'https://metis.fi/static/'
+# Should this come from .env?
+STATIC_URL = 'https://ohtup-staging.cs.helsinki.fi/qleader-static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -145,31 +149,48 @@ LOGOUT_REDIRECT_URL = '/'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
 }
 
 AUTHENTICATION_BACKENDS = (
+    'social_core.backends.orcid.ORCIDOAuth2',
     'social_core.backends.google.GoogleOAuth2',
- )
+    'social_core.backends.facebook.FacebookOAuth2',
+)
 
+if (os.getenv("PRODUCTION", "").lower() == "true"):
+    # Running in production
+    SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+    LOGIN_REDIRECT_URL = '/qleader'
+    LOGOUT_REDIRECT_URL = '/qleader'
 SOCIAL_AUTH_JSONFIELD_ENABLED = True
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("GOOGLE_OAUTH2_KEY")
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("GOOGLE_OAUTH2_SECRET")
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("GOOGLE_OAUTH2_KEY", "")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("GOOGLE_OAUTH2_SECRET", "")
+if len(SOCIAL_AUTH_GOOGLE_OAUTH2_KEY) > 20 and len(SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET) > 20:
+    GOOGLE_STATUS = ''
+else:
+    GOOGLE_STATUS = 'disabled'
 
-# SOCIAL_AUTH_GITHUB_KEY = 'xxx'
-# SOCIAL_AUTH_GITHUB_SECRET = 'xxx'
+SOCIAL_AUTH_ORCID_KEY = os.getenv("ORCID_KEY", "")
+SOCIAL_AUTH_ORCID_SECRET = os.getenv("ORCID_SECRET", "")
+if len(SOCIAL_AUTH_ORCID_KEY) > 15 and len(SOCIAL_AUTH_ORCID_SECRET) > 20:
+    ORCID_STATUS = ''
+else:
+    ORCID_STATUS = 'disabled'
 
-# SOCIAL_AUTH_TWITTER_KEY = 'xxx'
-# SOCIAL_AUTH_TWITTER_SECRET = 'xx'
-
-# SOCIAL_AUTH_FACEBOOK_KEY = 'xxxx'
-# SOCIAL_AUTH_FACEBOOK_SECRET = 'xxx'
-# SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
-# SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-#   'fields': 'name, email'
-# }
+SOCIAL_AUTH_FACEBOOK_KEY = os.getenv("FACEBOOK_KEY", "")
+SOCIAL_AUTH_FACEBOOK_SECRET = os.getenv("FACEBOOK_SECRET", "")
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'name, email'
+}
+if len(SOCIAL_AUTH_FACEBOOK_KEY) > 12 and len(SOCIAL_AUTH_FACEBOOK_SECRET) > 20:
+    FACEBOOK_STATUS = ''
+else:
+    FACEBOOK_STATUS = 'disabled'
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',

@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   qleader-db:
-    image: postgres:13.1
+    image: postgres:13.3
     environment:
       - POSTGRES_DB=${DATABASE_NAME}
       - POSTGRES_USER=${DATABASE_USER}

@@ -1,0 +1,146 @@
+{% extends "rest_framework/base.html" %}
+
+{% block title %}{{ profile_user.username }}'s profile page{% endblock %}
+
+{% block style %}
+{{ block.super }}
+<style type="text/css">
+  .clickable-row {
+    cursor: pointer;
+  }
+
+  .clickable-row:hover {
+    background-color: #eeeeee;
+  }
+
+  .checkbox-td {
+    background-color: #ffffff;
+  }
+
+  .checkbox {
+    display: inline;
+  }
+
+  .profile-info {
+    border: 1px solid #ccc;
+    border-radius: 10px;  
+    margin: 3px;
+    padding: 2%;
+  }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="starter-template">
+  <h1>
+    {{ profile_user.username }}'s profile 
+    {% if profile_user.id == request.user.id %}
+    <a class="btn btn-info" href='{{ path_prefix }}/get-token/'>
+      Get upload token
+    </a>
+    {% endif %}
+  </h1>
+
+  <div class="row">
+    <div class="col-sm-4" >
+      {% include "blocks/profile_information.html" %}
+    </div>
+
+    <div class="col-sm-8">
+      <h3>{{ profile_user.username }}'s experiments</h3>
+
+      <table width="100%">
+        <thead>
+          <th>ID</th>
+          <th>Basis set</th>
+          <th>Transformation</th>
+          <th>Optimizer</th>
+          <th>Date</th>
+          <th>Visibility</th>
+          <th>Compare</th>
+        </thead>
+        {% for result in profile_results %}
+        <tr class='clickable-row' data-href='{{ path_prefix }}/api/{{ result.id }}/'>
+          <td>{{ result.id }}</td>
+          <td>{{ result.basis_set }}</td>
+          <td>{{ result.transformation }}</td>
+          <td>{{ result.optimizer }}</td>
+          <td>{{ result.created|date:"Y-m-d H:i" }}</td>
+          {% if result.public %}
+            <td>Public</td>
+          {% else %}
+            <td>Private</td>
+          {% endif %}
+          <td class='checkbox-td'><input type="checkbox" id="{{ result.id }}">&nbsp;</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <a id="compare" href="">Compare</a>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+{{ block.super }}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/js-cookie@3.0.0/dist/js.cookie.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  // When a page is loaded, make all checkboxes unchecked
+  const checkboxes = document.querySelectorAll('input');
+  for (i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].checked = false;
+  };
+
+  $(document).ready(function ($) {
+    $(".clickable-row").click(function (event) {
+      // Don't redirect the user if checkbox or its vicinity is clicked.
+      if (event.target.type !== 'checkbox' && event.target.className !== 'checkbox-td') {
+        window.location = $(this).data("href")
+      }
+    });
+  });
+
+  $('#compare').click(function() {
+    const checkboxes = [...document.querySelectorAll('input')];
+    if (checkboxes.length === 0) {
+      alert("please select results to compare")
+      return
+    }
+    checkedIds = {id: checkboxes.filter(elem => elem.checked === true).map(elem => elem.id)};
+    const params = $.param(checkedIds);
+    url = `{{ path_prefix }}/api/compare/?${params}`;
+    $(this).attr("href", url);
+    window.location = $(this).data("href");
+  });
+
+  $('#modify_profile').click(function () {
+        if (window.confirm("Confirm editing your profile?")) {
+            const csrftoken = Cookies.get('csrftoken')
+            return axios
+                .post(`{{ path_prefix }}/user/{{ user.id }}/modify_profile/`, {
+                    'bio': $("#bio").val(),
+                    'institution': $("#institution").val(),
+                    'realName': $("#realName").val()
+                },
+                    {
+                        headers: {
+                            'X-CSRFToken': csrftoken
+                        }
+                    })
+                .then(response => {
+                    console.log(response.status);
+                    window.location = window.location;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    });
+
+</script>
+{% endblock %}

@@ -30,6 +30,10 @@
 
   {% include "navbar.html" %}
 
+  {% if request.user.is_authenticated %}
+  {% include "blocks/my_uploads.html" %}
+  {% endif %}
+
   <h2>All uploads</h2>
 
   <table width="100%">
@@ -39,6 +43,7 @@
       <th>Transformation</th>
       <th>Optimizer</th>
       <th>Date</th>
+      <th>Uploaded by</th>
       <th>Compare</th>
     </thead>
     {% for result in results %}
@@ -48,6 +53,7 @@
       <td>{{ result.transformation }}</td>
       <td>{{ result.optimizer }}</td>
       <td>{{ result.created|date:"Y-m-d H:i" }}</td>
+      <td>{{ result.user__username }}</td>
       <td class='checkbox-td'><input type="checkbox" id="{{ result.id }}">&nbsp;</td>
     </tr>
     {% endfor %}
@@ -76,6 +82,10 @@
 
   $('#compare').click(function() {
     const checkboxes = [...document.querySelectorAll('input')];
+    if (checkboxes.length === 0) {
+      alert("please select results to compare")
+      return
+    }
     checkedIds = {id: checkboxes.filter(elem => elem.checked === true).map(elem => elem.id)};
     const params = $.param(checkedIds);
     url = `{{ path_prefix }}/api/compare/?${params}`;
